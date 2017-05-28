@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">MyFullSceen</string>
+    <string name="texto">Time S2</string>
+    <string name="texto2">Desenvolvido por</string>
+    <string name="nome">Nome</string>
+    <string name="idade">idade</string>
+    <string name="selecione">Selecione o seu time</string>
+    <string name="Real_Madrid">Real Madrid</string>
+    <string name="Russia">Russia</string>
+    <string name="Lazio">Lazio</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="confirmacaocadastro">
+        Olá, %1$s parabens por torcer pelo %2$s.
+    </string>
+</resources>

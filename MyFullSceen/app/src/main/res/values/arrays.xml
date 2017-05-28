@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="times">
+        <item>@string/selecione</item>
+        <item>@string/Lazio</item>
+        <item>@string/Real_Madrid</item>
+        <item>@string/Russia</item>
+    </string-array>
+
+
+
+</resources>
