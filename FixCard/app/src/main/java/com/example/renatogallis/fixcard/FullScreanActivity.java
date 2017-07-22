@@ -10,6 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.renatogallis.fixcard.Banco.DataBase_Usuarios;
+import com.example.renatogallis.fixcard.Banco.Scripts_Table_Usuarios;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -19,14 +22,20 @@ import retrofit2.Response;
 public class FullScreanActivity extends AppCompatActivity {
    private final int SPLASH_DISPLAY_LENGTH = 5000;
     private UsuarioAPI usuarioAPI;
-    private String nome,senha;
+    private Usuario usuario;
+    Scripts_Table_Usuarios dao = new Scripts_Table_Usuarios(this);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_full_screan);
-        //loading();
-        carregaDados();
+
+        if(DataBase_Usuarios.getDadosTabela(dao.returnConection(),dao.TABLE_USUARIOS) ==true) {
+            carregaDados();
+        }
+        loading();
+
 
 
     }
@@ -53,27 +62,31 @@ public class FullScreanActivity extends AppCompatActivity {
        },SPLASH_DISPLAY_LENGTH);
    }
 
+    private void carregaDados(){
+        usuarioAPI = APIUtils.getUsuarioAPI();
+        usuarioAPI.getDadosUsuarios().enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                if(response.isSuccessful()){
+                    usuario =  response.body();
+                    salvar_dados_cadastrais(usuario);
 
-
-   private void carregaDados(){
-       usuarioAPI = APIUtils.getUsuarioAPI();
-       usuarioAPI.getDadosUsuarios().enqueue(new Callback<Usuario>() {
-           @Override
-           public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-            if(response.isSuccessful()){
-                nome  =  response.body().getUsuario();
-                senha =  response.body().getSenha();
+                }
             }
 
-           }
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
 
-           @Override
-           public void onFailure(Call<Usuario> call, Throwable t) {
-
-           }
+            }
 
 
-       });
+        });
+        //Log.d("elementos da lista",lista.get(0));
+    }
 
-   }
+    public  void salvar_dados_cadastrais(Usuario usuario){
+
+        dao.adicionar(usuario);
+    }
+
 }

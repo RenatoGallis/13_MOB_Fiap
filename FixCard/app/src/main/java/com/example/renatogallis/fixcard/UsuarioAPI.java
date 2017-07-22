@@ -2,6 +2,7 @@ package com.example.renatogallis.fixcard;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 
 /**
  * Created by Renato Gallis on 09/07/2017.

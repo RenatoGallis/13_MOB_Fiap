@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">FixCard</string>
+    <string name="app_name">Bookeria</string>
+    <string name="titulo_tela_login">Add Books</string>
+    <string name="desenvolvido_por">Developer by: Renato Gallis</string>
+    <string name="hint_tela_login_nome">User</string>
+    <string name="hint_tela_login_senha">Password</string>
+    <string name="button_login_avançar">Login</string>
+
 </resources>
